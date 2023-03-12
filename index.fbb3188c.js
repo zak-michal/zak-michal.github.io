@@ -585,6 +585,7 @@ function initAcc() {
     navigator.permissions.query({
         name: "accelerometer"
     }).then((result)=>{
+        alert(result.state);
         ctx.accelerometer = new Accelerometer();
         ctx.accelerometer.start();
         showAcc();
