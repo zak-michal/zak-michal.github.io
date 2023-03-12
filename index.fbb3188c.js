@@ -586,9 +586,11 @@ function initAcc() {
         name: "accelerometer"
     }).then((result)=>{
         alert(result.state);
-        ctx.accelerometer = new Accelerometer();
+        ctx.accelerometer = new Accelerometer({
+            frequency: 10
+        });
+        ctx.accelerometer.addEventListener("reading", showAcc);
         ctx.accelerometer.start();
-        showAcc();
     } // setInterval(showAcc, 300)
     );
 }
