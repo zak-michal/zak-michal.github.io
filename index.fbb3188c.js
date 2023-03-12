@@ -581,13 +581,18 @@ function showAcc() {
     let acc = document.getElementById("acc");
     acc.innerText = `${ctx.accelerometer.x} ${ctx.accelerometer.y} ${ctx.accelerometer.z}`;
 }
+function initAcc() {
+    navigator.permissions.query({
+        name: "accelerometer"
+    }).then(()=>setInterval(showAcc, 300));
+}
 function init() {
     document.getElementById("start").onclick = start;
     document.getElementById("fw").onclick = ()=>ctx.drive(100, 0);
     document.getElementById("left").onclick = ()=>ctx.drive(100, 1);
     document.getElementById("right").onclick = ()=>ctx.drive(100, -1);
     document.getElementById("stop").onclick = ()=>ctx.drive(0, 0);
-    setInterval(showAcc, 300);
+    initAcc();
 }
 function start() {
     let boost = new (0, _legoBoostBrowserDefault.default)();
