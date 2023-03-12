@@ -583,7 +583,7 @@ function showAcc() {
 }
 function initAcc() {
     navigator.permissions.query({
-        name: "geolocation"
+        name: "gyroscope"
     }).then(()=>{
         ctx.accelerometer = new Accelerometer();
         ctx.accelerometer.start();
