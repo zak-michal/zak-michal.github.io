@@ -583,8 +583,8 @@ function showAcc() {
 }
 function initAcc() {
     navigator.permissions.query({
-        name: "gyroscope"
-    }).then(()=>{
+        name: "accelerometer"
+    }).then((result)=>{
         ctx.accelerometer = new Accelerometer();
         ctx.accelerometer.start();
         showAcc();
@@ -612,7 +612,6 @@ function start() {
     console.info(boost);
 }
 document.addEventListener("DOMContentLoaded", init);
-alert("loaded");
 
 },{"lego-boost-browser":"55k8r","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"55k8r":[function(require,module,exports) {
 "use strict";
