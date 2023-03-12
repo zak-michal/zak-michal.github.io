@@ -564,7 +564,7 @@ function controller() {
     this.boost = null;
     this.v = 0.0;
     this.direction = 0.0;
-    this.accelerometer = new Accelerometer();
+    this.accelerometer = null;
     this.drive = function(v, direction) {
         this.v = v;
         this.direction = direction;
@@ -584,7 +584,11 @@ function showAcc() {
 function initAcc() {
     navigator.permissions.query({
         name: "accelerometer"
-    }).then(()=>setInterval(showAcc, 300));
+    }).then(()=>{
+        ctx.accelerometer = new Accelerometer();
+        showAcc();
+    } // setInterval(showAcc, 300)
+    );
 }
 function init() {
     document.getElementById("start").onclick = start;
@@ -603,6 +607,7 @@ function start() {
     console.info(boost);
 }
 document.addEventListener("DOMContentLoaded", init);
+alert("loaded");
 
 },{"lego-boost-browser":"55k8r","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"55k8r":[function(require,module,exports) {
 "use strict";
