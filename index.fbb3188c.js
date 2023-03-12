@@ -583,9 +583,10 @@ function showAcc() {
 }
 function initAcc() {
     navigator.permissions.query({
-        name: "accelerometer"
+        name: "geolocation"
     }).then(()=>{
         ctx.accelerometer = new Accelerometer();
+        ctx.accelerometer.start();
         showAcc();
     } // setInterval(showAcc, 300)
     );
@@ -596,7 +597,11 @@ function init() {
     document.getElementById("left").onclick = ()=>ctx.drive(100, 1);
     document.getElementById("right").onclick = ()=>ctx.drive(100, -1);
     document.getElementById("stop").onclick = ()=>ctx.drive(0, 0);
-    initAcc();
+    try {
+        initAcc();
+    } catch (e) {
+        alert(e.toString());
+    }
 }
 function start() {
     let boost = new (0, _legoBoostBrowserDefault.default)();
